@@ -7,7 +7,7 @@ import pygame
 from utils.dict2namedtuple import convert
 
 '''
-A simple n*m grid-world game for N agents trying to capture M prey and M' hares. 
+A simple n*m grid-world game for N agents trying to capture M prey and M' hares.
 No two entities can occupy the same position. The world can be either toroidal or bounded.
 
 GRAPH INTERFACE
@@ -19,33 +19,33 @@ Each entity is represented as a dictionary with the following fields:
 
 INTERSECTION OF OBSERVATIONS:
 This version of predator prey also includes the observation method get_obs_intersection(agent_ids, global_view=False),
-which returns a numpy array either as of size batch_size*state_dim (if global_view=True) or of size 
-len(agent_ids)*batch_size*observation_dim (if global_view=False), where batch_size can be omitted if it is 
-not specified in the constructor. The array contains the intersection of the observation of all agents 
+which returns a numpy array either as of size batch_size*state_dim (if global_view=True) or of size
+len(agent_ids)*batch_size*observation_dim (if global_view=False), where batch_size can be omitted if it is
+not specified in the constructor. The array contains the intersection of the observation of all agents
 in the list of agent_ids, either as state or as agent observation (centered around the respective agent),
 but with the difference that the agent and prey (ID+1) are given, instead of just their presence (1).
-Standard agent observations can be recovered by masking array>0.   
+Standard agent observations can be recovered by masking array>0.
 
 MOVEMENTS
-Both predators and prey can move to the 4 adjacent states or remain in the current one. Movement is executed 
-sequentially: first the predators move in a random order, then the prey chooses a random available action 
-(i.e. an action that would not lead to a collision with another entity). 
+Both predators and prey can move to the 4 adjacent states or remain in the current one. Movement is executed
+sequentially: first the predators move in a random order, then the prey chooses a random available action
+(i.e. an action that would not lead to a collision with another entity).
 A prey is captured if it cannot move (i.e. if 4 agents block all 4 adjacent fields).
 
-REWARDS 
-A captured prey is removed and yields a collaborative reward of +50. 
-Forcing the a prey to move (scaring it off), by moving into the same field yields no additional reward. 
-Collisions between agents is not punished, and each movement costs additional -0.1 reward. 
-An episode ends if all prey have been captured.  
+REWARDS
+A captured prey is removed and yields a collaborative reward of +50.
+Forcing the a prey to move (scaring it off), by moving into the same field yields no additional reward.
+Collisions between agents is not punished, and each movement costs additional -0.1 reward.
+An episode ends if all prey have been captured.
 
 OBSERVATIONS
-Prey only react to blocked movements (after the predators have moved), but predator agents observe all positions 
-in a square of obs_size=(2*agent_obs+1) centered around the agent's current position. The observations are reshaped 
+Prey only react to blocked movements (after the predators have moved), but predator agents observe all positions
+in a square of obs_size=(2*agent_obs+1) centered around the agent's current position. The observations are reshaped
 into a 1d vector of size (2*obs_size), including all predators and prey the agent can observe.
 
 State output is a list of length 2, giving location of all agents and all targets.
 
-TODO: Fine tune the reward to allow fast learning. 
+TODO: Fine tune the reward to allow fast learning.
 '''
 
 int_type = np.int16
