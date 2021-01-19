@@ -9,6 +9,9 @@ def env_fn(env, **kwargs) -> MultiAgentEnv:
 REGISTRY = {}
 REGISTRY["sc2"] = partial(env_fn, env=StarCraft2Env)
 
-if sys.platform == "linux":
-    os.environ.setdefault("SC2PATH",
-                          os.path.join(os.getcwd(), "3rdparty", "StarCraftII"))
+# if sys.platform == "linux":
+#     os.environ.setdefault("SC2PATH",
+#                           os.path.join(os.getcwd(), "3rdparty", "StarCraftII"))
+from .stag_hunt import StagHunt
+
+REGISTRY["stag_hunt"] = partial(env_fn, env=StagHunt)

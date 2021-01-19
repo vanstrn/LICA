@@ -1,9 +1,10 @@
 
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=8m name=lica_8m_1
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=2s3z name=lica_2s3z_1
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=3s5z name=lica_3s5z_1
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=1c3s5z name=lica_1c3s5z_1 t_max=5000000
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=5m_vs_6m name=lica_5m_vs_6m_1 t_max=10000000
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=2c_vs64zg name=lica_2c_vs64zg_1 t_max=10000000
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=MMM2 name=lica_MMM2_1 t_max=10000000
-python src/main.py --config=lica --env-config=sc2 with env_args.map_name=3s5z_vs_3s6z name=lica_3s5z_vs_3s6z_1 t_max=10000000 with entropy_coef=0.03
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=8m name=lica_8m_1 && \
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=2s3z name=lica_2s3z_1 && \
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=3s5z name=lica_3s5z_1 && \
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=1c3s5z name=lica_1c3s5z_1 t_max=5000000 && \
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=5m_vs_6m name=lica_5m_vs_6m_1 t_max=10000000 && \
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=2c_vs64zg name=lica_2c_vs64zg_1 t_max=10000000 && \
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=MMM2 name=lica_MMM2_1 t_max=10000000 && \
+python src/main.py --config=lica --env-config=sc2 with env_args.map_name=3s5z_vs_3s6z name=lica_3s5z_vs_3s6z_1 t_max=10000000 with entropy_coef=0.03 & \
+disown
