@@ -16,7 +16,7 @@ class EpisodeRunner:
             self.env = env_REGISTRY[self.args.env](**self.args.env_args)
         else:
             self.env = env_REGISTRY[self.args.env](env_args=self.args.env_args, args=args)
-            
+
         self.episode_limit = self.env.episode_limit
         self.t = 0
 
@@ -70,7 +70,7 @@ class EpisodeRunner:
             # Receive the actions for each agent at this timestep in a batch of size 1
             actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env, test_mode=test_mode)
 
-            reward, terminated, env_info = self.env.step(actions[0])
+            reward, terminated, env_info = self.env.step(actions[0].cpu())
             episode_return += reward
 
             post_transition_data = {
