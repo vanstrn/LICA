@@ -29,3 +29,8 @@ def env_fn2( **kwargs):
     return env
 
 REGISTRY["predator_prey"] = partial(env_fn2)
+
+from .ctf.ctf import CTF, CTF_v2
+
+REGISTRY["ctf"] = partial(env_fn, env=CTF)
+REGISTRY["ctf2"] = partial(env_fn, env=CTF_v2)

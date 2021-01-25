@@ -1,0 +1,39 @@
+env: ctf
+
+env_args:
+  map_size: 10
+  elements:
+    NUM_BLUE: 2
+    NUM_RED: 1
+    NUM_BLUE_UAV: 0
+    NUM_RED_UAV: 0
+
+  settings:
+    STOCH_ATTACK: True
+    STOCH_ATTACK_BIAS: 2
+    STOCH_TRANSITIONS: False
+    STOCH_ZONES: True
+    RED_PARTIAL: False
+    BLUE_PARTIAL: False
+
+  control:
+    MAX_STEP: 200
+
+  experiments:
+    SAVE_BOARD_RGB: False
+    RESPAWN_AGENT_DEAD: False
+
+test_nepisode: 16
+test_interval: 10000
+log_interval: 2000
+runner_log_interval: 2000
+learner_log_interval: 2000
+t_max: 2000000
+
+agent: "crnn" # Default rnn agent
+rnn_hidden_dim: 128 # Size of hidden state for default rnn agent
+embed_dim: 128 # Size of hidden state for default rnn agent
+
+obs_last_action: False # Include the agent's last action (one_hot) in the observation
+obs_agent_id: False # Include the agent's last action (one_hot) in the observation
+reshape: False

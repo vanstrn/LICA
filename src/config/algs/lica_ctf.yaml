@@ -8,7 +8,7 @@ mask_before_softmax: True # set to True for entropy regularization
 
 runner: "episode"
 
-buffer_size: 512
+buffer_size: 256
 batch_size_run: 1
 batch_size: 32
 
@@ -19,9 +19,12 @@ target_update_interval: 200
 
 # use lica
 agent_output_type: "pi_logits"
-learner: "lica_learner"
+learner: "lica_learner_cnn"
 mixing_embed_dim: 64
+embed_dim: 128
 hypernet_layers: 2
-entropy_coef: 0.11 # 0.03 for 3s5z_vs_3s6z, 0.06 for all others
+entropy_coef: 0.01 # 0.03 for 3s5z_vs_3s6z, 0.06 for all others
 
-name: "lica"
+name: "lica_ctf"
+reshape: False
+agent: "crnn"

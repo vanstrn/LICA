@@ -78,4 +78,6 @@ dependencies:
     - websocket-client==0.57.0
     - whichcraft==0.6.1
     - wrapt==1.11.2
+    - git+https://github.com/raide-project/ctf_research.git@game/convoy
+    - git+https://github.com/vanstrn/multiagent-particle-envs.git
 prefix: /home/raide/anaconda3/envs/lica2
