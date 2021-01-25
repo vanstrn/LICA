@@ -34,3 +34,12 @@ from .ctf.ctf import CTF, CTF_v2
 
 REGISTRY["ctf"] = partial(env_fn, env=CTF)
 REGISTRY["ctf2"] = partial(env_fn, env=CTF_v2)
+
+from .MAPredatorPreyWrappers import CooperativeNavigation
+
+def env_fn3( **kwargs):
+    env = gym.make(kwargs.get('env_args').get("name"))
+    env=CooperativeNavigation(env)
+    return env
+
+REGISTRY["cooperative_navigation"] = partial(env_fn3)

@@ -73,3 +73,45 @@ class PredatorPreyTerminator(gym.core.Wrapper):
             return  reward[0], done, {}
         else:
             return  reward[0], done[0], {}
+
+
+class CooperativeNavigation(gym.core.Wrapper):
+    """
+    Wrapper wrap observation into dictionary
+    """
+
+    def __init__(self, env):
+        super().__init__(env)
+        self.episode_limit =200
+        self.observation_space = self.observation_space[0].shape
+        self.state_space = self.state_space.shape
+        self.action_space = self.action_space[0].n
+        self.n_agents=self.env.n
+
+
+    def reset(self, **kwargs):
+        observation = self.env.reset(**kwargs)
+        self.obs = observation
+        return observation
+
+    def step(self, action):
+        observation, reward, done, info = self.env.step(action=action)
+        self.obs = observation
+        if isinstance(done,bool):
+            return  reward[0], done, {}
+        else:
+            return  reward[0], done[0], {}
+
+    def get_env_info(self):
+        info = {"state_shape": self.state_space[0],
+                "obs_shape": self.observation_space[0],
+                "n_actions": self.action_space,
+                "n_agents": self.n_agents,
+                "episode_limit": self.episode_limit}
+        return info
+
+    def get_avail_actions(self):
+        return [np.ones(self.action_space) for i in range(self.n_agents)]
+
+    def get_obs(self):
+        return self.obs
